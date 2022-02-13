@@ -1,0 +1,27 @@
+{
+  "name": "ebytr-task-back-end",
+  "version": "1.0.0",
+  "description": "Projeto Trybe",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --coverage --forceExit --runInBand --noStackTrace",
+    "test:coverage": "NODE_ENV=test jest --coverage --forceExit --runInBand --noStackTrace",
+    "dev": "nodemon src/main/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
+  }
+}
