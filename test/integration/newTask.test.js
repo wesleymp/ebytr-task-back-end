@@ -1,6 +1,6 @@
 const request = require('supertest');
-const app = require('../src/main/app');
-const { getConnection } = require('../src/models/connection');
+const app = require('../../src/main/app');
+const { getConnection } = require('../../src/models/connection');
 
 describe('Teste para criar uma nova tarefa', () => {
   afterEach(() => {
