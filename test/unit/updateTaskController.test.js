@@ -48,7 +48,7 @@ describe('Testando o controller updateTaskController', () => {
     req.body.id = '012345678998765432102424';
     req.body.status = 3;
     await updateTaskController(req, res);
-    expect(res.status.calledWith(404)).toBe(true);
+    expect(res.json.calledWith({ message: 'ID não encontrado.' })).toBe(true);
   });
 
   it('deve retornar um status 200 se a tarefa for atualizada com sucesso', async () => {
