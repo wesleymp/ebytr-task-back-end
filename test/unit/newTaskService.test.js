@@ -1,6 +1,13 @@
+const { getConnection } = require('../../src/models/connection');
 const { newTaskService } = require('../../src/services/tasks/newTaskService');
 
 describe('Testando o service newTaskService', () => {
+  afterAll(() => {
+    getConnection().then((conn) => {
+      conn.collection('tasks').deleteMany({});
+    });
+  });
+
   it('deve retornar um status 201 se o registro for efetuado com sucesso', async () => {
     const taskData = await newTaskService('valid_title');
     expect(taskData.status).toBe(201);
