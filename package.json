@@ -4,7 +4,9 @@
   "description": "Projeto Trybe",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest --coverage --forceExit --runInBand --noStackTrace",
+    "test": "NODE_ENV=test jest --forceExit --runInBand --noStackTrace",
+    "test:unit": "NODE_ENV=test jest unit --forceExit --runInBand --noStackTrace",
+    "test:integration": "NODE_ENV=test jest integration --forceExit --runInBand --noStackTrace",
     "test:coverage": "NODE_ENV=test jest --coverage --forceExit --runInBand --noStackTrace",
     "dev": "nodemon src/main/server.js"
   },
@@ -17,6 +19,7 @@
     "eslint-plugin-import": "^2.25.4",
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "sinon": "^13.0.1",
     "supertest": "^6.2.2"
   },
   "dependencies": {
