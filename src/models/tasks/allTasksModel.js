@@ -5,7 +5,7 @@ const allTasksModel = async () => {
   const query = await conn
     .collection('tasks')
     .find({})
-    .sort({ created_at: -1 })
+    .sort({ status: 1, created_at: -1 })
     .toArray();
   return query;
 };

@@ -8,7 +8,7 @@ describe('Rota para listar todas as tarefas (/tasks)', () => {
     const conn = await getConnection();
     await conn.collection('tasks').insertOne({
       title: 'valid_title_task',
-      status: 'pendente',
+      status: 2,
       created_at: new Date().toLocaleString('pt-br', {
         timeZone: 'America/Sao_Paulo',
       }),
