@@ -3,7 +3,7 @@ const { newTasksModel } = require('../../models');
 const newTaskService = async (title) => {
   const payload = {
     title,
-    status: 1,
+    status: 2,
     created_at: new Date().toLocaleString('pt-br', {
       timeZone: 'America/Sao_Paulo',
     }),
