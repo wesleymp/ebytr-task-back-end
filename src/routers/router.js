@@ -3,6 +3,7 @@ const {
   newTaskController,
   allTasksController,
   updateTaskController,
+  removeTaskController,
 } = require('../controllers');
 const taskMiddleware = require('../middlewares/taskMiddleware');
 
@@ -16,5 +17,6 @@ router.put(
   taskMiddleware.validateStatus,
   updateTaskController,
 );
+router.delete('/remove-task', taskMiddleware.validateId, removeTaskController);
 
 module.exports = router;
