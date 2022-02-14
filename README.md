@@ -102,7 +102,7 @@ _Rotas:_
 
 ## Arvore de diretórios
 
-<img src="" />
+<img src="https://github.com/wesleymp/ebytr-task-back-end/blob/main/image_dir/Captura%20de%20tela%20de%202022-02-14%2019-09-01.png?raw=true" />
 
 ---
 
