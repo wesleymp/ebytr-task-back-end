@@ -1,6 +1,7 @@
 const sinon = require('sinon');
 
 const { newTaskController } = require('../../src/controllers');
+const { getConnection } = require('../../src/models/connection');
 
 describe('Testando o controller newTaskController', () => {
   const req = {};
@@ -11,6 +12,12 @@ describe('Testando o controller newTaskController', () => {
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
+  });
+
+  afterAll(() => {
+    getConnection().then((conn) => {
+      conn.collection('tasks').deleteMany({});
+    });
   });
 
   it('deve retornar um status 201 se o registro for efetuado com sucesso', async () => {
