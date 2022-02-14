@@ -128,7 +128,7 @@ _Rotas:_
 {
   "_id": "6206e3cf54aca1010661c093",
   "title": "Exemplo de titulo",
-  "status": "pendente",
+  "status": 2,
   "created_at": "11/02/2022 19:31:43",
   "updated_at": "11/02/2022 19:31:43"
 }
