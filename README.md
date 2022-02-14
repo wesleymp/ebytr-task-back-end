@@ -63,6 +63,14 @@ _Funcionalidades:_
 
 ---
 
+_Status das tarefas:_
+
+```
+1: 'em andamento'
+2: 'pendente'
+3: 'pronta'
+```
+
 _Rotas:_
 
 `[get] /tasks`
