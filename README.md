@@ -4,13 +4,13 @@
 
 # indice
 
-- [Tecnologias](#Técnologias)
+- [Tecnologias](#Tecnologias)
 - [Instalação](#Instalação)
 - [Informações da aplicação](#Aplicação)
 - [Schema do MongoDB](#MongoDB)
 - [Realizando os testes](#Testes)
 
-# Técnologias
+# Tecnologias
 
 - Node.js - https://nodejs.org/en/
 - Express - https://expressjs.com/pt-br/
