@@ -171,6 +171,5 @@ _Precisa estar com o mongodb instalado e iniciado para os testes funcionarem_
 
 ## Referência
 
-- [Conexão com o MongoDB](https://app.betrybe.com/course/back-end/nodejs-camada-de-servico-e-arquitetura-rest-e-restful/arquitetura-de-software-camada-de-model/69147096-f19d-4ab4-a839-906359d79172/conteudos/e5f52e81-2757-4bf1-9b83-91fb37972892/model-com-mongodb/012da0ea-223f-404d-b21c-12be88f22a97?use_case=side_bar)
 - [Formato para as Datas](https://stackoverflow.com/a/48206857)
 - [Timezones](https://stackoverflow.com/a/54500197)
