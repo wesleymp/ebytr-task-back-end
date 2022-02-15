@@ -4,7 +4,7 @@
 
 # indice
 
-- [Técnologias](#Técnologias)
+- [Tecnologias](#Técnologias)
 - [Instalação](#Instalação)
 - [Informações da aplicação](#Aplicação)
 - [Schema do MongoDB](#MongoDB)
