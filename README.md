@@ -4,11 +4,22 @@
 
 # indice
 
+- [Informações da aplicação](#Aplicação)
 - [Tecnologias](#Tecnologias)
 - [Instalação](#Instalação)
-- [Informações da aplicação](#Aplicação)
 - [Schema do MongoDB](#MongoDB)
 - [Realizando os testes](#Testes)
+
+# Aplicação
+
+_Funcionalidades:_
+
+- Visualizar a lista de tarefas;
+- Inserir uma nova tarefa na lista;
+- Remover uma tarefa da lista;
+- Atualizar uma tarefa da lista;
+
+---
 
 # Tecnologias
 
@@ -26,6 +37,8 @@
 
 # Instalação
 
+## Normal
+
 - `git clone https://github.com/wesleymp/ebytr-task-back-end.git`
 
   Entra na pasta do projeto `cd ebytr-task-back-end`
@@ -42,34 +55,31 @@
   MONGO_URL=mongodb://127.0.0.1:27017
 
   DB_TASK=tasks
-
-  DB_TEST=test_tasks
   ```
 
-#### OBS: _Certifique-se que o mongodb esteja instalado em seu computador_
+  Para iniciar a aplicação `npm run dev`
+
+## Docker
+
+- `git clone https://github.com/wesleymp/ebytr-task-back-end.git`
+
+  Entra na pasta do projeto `cd ebytr-task-back-end`
+
+  Modifique o .env.example para .env na raiz do projeto e adicione as váriaveis de ambiente
+
+  - _Exemplo de como deve ficar_
+
+  ```
+  PORT=3333
+
+  MONGO_URL=mongodb://docker:docker@ebytr-task-back-end_mongo_1:27017
+
+  DB_TASK=tasks
+  ```
+
+  Utilize o comando `docker-compose up --build`
 
 ---
-
-# Aplicação
-
-Para iniciar a aplicação `npm run dev`
-
-_Funcionalidades:_
-
-- Visualizar a lista de tarefas;
-- Inserir uma nova tarefa na lista;
-- Remover uma tarefa da lista;
-- Atualizar uma tarefa da lista;
-
----
-
-_Status das tarefas:_
-
-```
-1: 'em andamento'
-2: 'pendente'
-3: 'pronta'
-```
 
 _Rotas:_
 
@@ -86,6 +96,14 @@ _Rotas:_
 ```
 
 `[put] /update-task`
+
+_Status das tarefas:_
+
+```
+1: 'em andamento'
+2: 'pendente'
+3: 'pronta'
+```
 
 - _Request: body_
 
@@ -132,6 +150,8 @@ _Rotas:_
 - Database `tasks`
 - Collection `tasks`
 
+- Estrutura
+
 ```json
 {
   "_id": "6206e3cf54aca1010661c093",
@@ -143,6 +163,8 @@ _Rotas:_
 ```
 
 # Testes
+
+Caso esteja rodando a aplicação no Docker entre primeiro no container `docker exec -it ebytr-task-back-end_ebytr_1 bash` e rode um dos comando a baixo:
 
 - `npm test` para rodar todos os testes
 - `npm run test:unit` para rodar os testes unitários
