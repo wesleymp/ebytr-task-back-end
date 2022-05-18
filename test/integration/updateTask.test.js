@@ -1,37 +1,18 @@
 const request = require('supertest');
+const sinon = require('sinon');
 const app = require('../../src/main/app');
-const { getConnection } = require('../../src/models/connection');
+const models = require('../../src/models');
 
 describe('Rota para atualizar uma tarefa (/update-task)', () => {
-  let getId;
-
-  beforeEach(async () => {
-    const conn = await getConnection();
-    const query = await conn.collection('tasks').insertOne({
-      title: 'valid_title_task',
-      status: 2,
-      created_at: new Date().toLocaleString('pt-br', {
-        timeZone: 'America/Sao_Paulo',
-      }),
-      updated_at: new Date().toLocaleString('pt-br', {
-        timeZone: 'America/Sao_Paulo',
-      }),
-    });
-
-    getId = query.insertedId.toString();
-  });
-
   afterEach(() => {
-    getConnection().then((conn) => {
-      conn.collection('tasks').deleteMany({});
-    });
+    sinon.restore();
   });
 
   it('deve retornar um status 400 se o usuário não informar o status para atualizar a tarefa', (done) => {
     request(app)
       .put('/update-task')
       .send({
-        id: getId,
+        id: '6206e3e054aca1010661c095',
         status: '',
       })
       .expect(400)
@@ -42,7 +23,7 @@ describe('Rota para atualizar uma tarefa (/update-task)', () => {
     request(app)
       .put('/update-task')
       .send({
-        id: getId,
+        id: '6206e3e054aca1010661c095',
         status: 12,
       })
       .expect(400)
@@ -72,6 +53,7 @@ describe('Rota para atualizar uma tarefa (/update-task)', () => {
   });
 
   it('deve retornar um status 404 se o usuário informar um id válido mas que não exista no banco de dados para atualizar a tarefa', (done) => {
+    sinon.stub(models, 'updateTaskModel').resolves({ modifiedCount: 1 });
     request(app)
       .put('/update-task')
       .send({
@@ -83,10 +65,11 @@ describe('Rota para atualizar uma tarefa (/update-task)', () => {
   });
 
   it('deve retornar um status 200 se o status da tarefa for atualizado com sucesso', (done) => {
+    sinon.stub(models, 'updateTaskModel').resolves({ modifiedCount: 1 });
     request(app)
       .put('/update-task')
       .send({
-        id: getId,
+        id: '6206e3e054aca1010661c095',
         status: 3,
       })
       .expect(200)

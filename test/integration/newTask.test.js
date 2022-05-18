@@ -1,12 +1,11 @@
 const request = require('supertest');
+const sinon = require('sinon');
 const app = require('../../src/main/app');
-const { getConnection } = require('../../src/models/connection');
+const models = require('../../src/models');
 
 describe('Teste para criar uma nova tarefa', () => {
   afterEach(() => {
-    getConnection().then((conn) => {
-      conn.collection('tasks').deleteMany({});
-    });
+    sinon.restore();
   });
 
   it('deve retornar um status 400 se o usuário não informar um titulo para uma nova tarefa', (done) => {
@@ -30,6 +29,7 @@ describe('Teste para criar uma nova tarefa', () => {
   });
 
   it('deve retornar um status 201 se o a nova tarefa for criada com sucesso', (done) => {
+    sinon.stub(models, 'newTasksModel').resolves();
     request(app)
       .post('/new-task')
       .send({
