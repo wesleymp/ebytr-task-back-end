@@ -1,4 +1,4 @@
-const { updateTaskModel } = require('../../models');
+const models = require('../../models');
 const { error } = require('../helpers/error');
 
 const updateTaskService = async (id, status) => {
@@ -9,7 +9,7 @@ const updateTaskService = async (id, status) => {
       timeZone: 'America/Sao_Paulo',
     }),
   };
-  const taskData = await updateTaskModel(payload);
+  const taskData = await models.updateTaskModel(payload);
   if (taskData.modifiedCount === 0) {
     error(404, 'ID não encontrado.');
   }

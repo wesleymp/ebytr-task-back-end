@@ -1,9 +1,9 @@
-const { allTasksModel } = require('../../models');
+const models = require('../../models');
 const { error } = require('../helpers/error');
 const { enumStatus } = require('../helpers/enumStatus');
 
 const allTasksService = async () => {
-  const dataTasks = await allTasksModel();
+  const dataTasks = await models.allTasksModel();
   if (dataTasks.length <= 0) {
     error(404, 'Nenhuma tarefa encontrada.');
   }

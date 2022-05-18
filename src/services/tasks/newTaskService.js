@@ -1,4 +1,4 @@
-const { newTasksModel } = require('../../models');
+const models = require('../../models');
 
 const newTaskService = async (title) => {
   const payload = {
@@ -11,7 +11,7 @@ const newTaskService = async (title) => {
       timeZone: 'America/Sao_Paulo',
     }),
   };
-  await newTasksModel(payload);
+  await models.newTasksModel(payload);
   return { status: 201, message: 'Tarefa criada com sucesso!' };
 };
 

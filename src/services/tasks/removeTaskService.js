@@ -1,8 +1,8 @@
-const { removeTaskModel } = require('../../models');
+const models = require('../../models');
 const { error } = require('../helpers/error');
 
 const removeTaskService = async (id) => {
-  const taskData = await removeTaskModel(id);
+  const taskData = await models.removeTaskModel(id);
   if (taskData.deletedCount === 0) {
     error(404, 'ID não encontrado.');
   }
