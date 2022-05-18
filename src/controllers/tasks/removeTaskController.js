@@ -1,9 +1,9 @@
-const { removeTaskService } = require('../../services');
+const services = require('../../services');
 
 const removeTaskController = async (req, res) => {
   try {
     const { id } = req.body;
-    const taskData = await removeTaskService(id);
+    const taskData = await services.removeTaskService(id);
     return res.status(taskData.status).json({ message: taskData.message });
   } catch (error) {
     return res.status(error.status).json({ message: error.message });

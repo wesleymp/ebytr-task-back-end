@@ -1,8 +1,8 @@
-const { allTasksService } = require('../../services');
+const services = require('../../services');
 
 const allTasksController = async (_req, res) => {
   try {
-    const taskData = await allTasksService();
+    const taskData = await services.allTasksService();
     return res
       .status(taskData.status)
       .json({ message: taskData.message, data: taskData.data });

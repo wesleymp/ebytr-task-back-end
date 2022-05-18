@@ -1,7 +1,6 @@
 const sinon = require('sinon');
-
 const { newTaskController } = require('../../src/controllers');
-const { getConnection } = require('../../src/models/connection');
+const services = require('../../src/services');
 
 describe('Testando o controller newTaskController', () => {
   const req = {};
@@ -9,24 +8,23 @@ describe('Testando o controller newTaskController', () => {
 
   beforeEach(() => {
     req.body = {};
-
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
   });
 
-  afterAll(() => {
-    getConnection().then((conn) => {
-      conn.collection('tasks').deleteMany({});
-    });
+  afterEach(() => {
+    sinon.restore();
   });
 
   it('deve retornar um status 201 se o registro for efetuado com sucesso', async () => {
+    sinon.stub(services, 'newTaskService').resolves({ status: 201, message: 'Tarefa criada com sucesso!' });
     req.body.title = 'valid_title';
     await newTaskController(req, res);
     expect(res.status.calledWith(201)).toBe(true);
   });
 
   it('deve retornar uma mensagem "Tarefa criada com sucesso!" se o registro for efetuado com sucesso', async () => {
+    sinon.stub(services, 'newTaskService').resolves({ status: 201, message: 'Tarefa criada com sucesso!' });
     req.body.title = 'valid_title';
     await newTaskController(req, res);
     expect(res.json.calledWith({ message: 'Tarefa criada com sucesso!' })).toBe(

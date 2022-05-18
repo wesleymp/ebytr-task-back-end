@@ -1,7 +1,7 @@
 const sinon = require('sinon');
-
 const { allTasksController } = require('../../src/controllers');
-const { getConnection } = require('../../src/models/connection');
+const services = require('../../src/services');
+const data = require('../memory-data/allTasks');
 
 describe('Testando o controller allTasksController', () => {
   const req = {};
@@ -12,18 +12,18 @@ describe('Testando o controller allTasksController', () => {
     res.json = sinon.stub().returns();
   });
 
-  afterAll(() => {
-    getConnection().then((conn) => {
-      conn.collection('tasks').deleteMany({});
-    });
+  afterEach(() => {
+    sinon.restore();
   });
 
   it('deve retornar um status 404 se não tiver nenhuma tarefa criada', async () => {
+    sinon.stub(services, 'allTasksService').rejects({ status: 404, message: 'Nenhuma tarefa encontrada.' });
     await allTasksController(req, res);
     expect(res.status.calledWith(404)).toBe(true);
   });
 
   it('deve retornar uma mensagem "Nenhuma tarefa encontrada." se não tiver nenhuma tarefa criada', async () => {
+    sinon.stub(services, 'allTasksService').rejects({ status: 404, message: 'Nenhuma tarefa encontrada.' });
     await allTasksController(req, res);
     expect(res.json.calledWith({ message: 'Nenhuma tarefa encontrada.' })).toBe(
       true,
@@ -31,17 +31,7 @@ describe('Testando o controller allTasksController', () => {
   });
 
   it('deve retornar um status 200 se encontrar 1 ou mais tarefas', async () => {
-    const conn = await getConnection();
-    await conn.collection('tasks').insertOne({
-      title: 'valid_title',
-      status: 'pendente',
-      created_at: new Date().toLocaleString('pt-br', {
-        timeZone: 'America/Sao_Paulo',
-      }),
-      updated_at: new Date().toLocaleString('pt-br', {
-        timeZone: 'America/Sao_Paulo',
-      }),
-    });
+    sinon.stub(services, 'allTasksService').resolves({ status: 200, message: 'OK', data });
     await allTasksController(req, res);
     expect(res.status.calledWith(200)).toBe(true);
   });
