@@ -144,24 +144,6 @@ _Rotas:_
 
 # Testes
 
-**Se estiver utilizando o windows, modifique o `package.json` para poder utilizar os testes**
-
-**Como deve ficar para rodas os testes no windows**
-
-```json
-"scripts": {
-    "test": "set NODE_ENV=test&& jest --forceExit --runInBand --noStackTrace",
-    "test:unit": "set NODE_ENV=test&& jest unit --forceExit --runInBand --noStackTrace",
-    "test:integration": "set NODE_ENV=test&& jest integration --forceExit --runInBand --noStackTrace",
-    "test:coverage": "set NODE_ENV=test&& jest --coverage --forceExit --runInBand --noStackTrace",
-    "dev": "nodemon src/main/server.js"
-  },
-```
-
-**Rodando os testes**
-
-_Precisa estar com o mongodb instalado e iniciado para os testes funcionarem_
-
 - `npm test` para rodar todos os testes
 - `npm run test:unit` para rodar os testes unitários
 - `npm run test:integration` para rodar os teste de integração
