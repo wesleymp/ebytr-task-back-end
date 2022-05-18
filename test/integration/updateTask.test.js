@@ -53,7 +53,7 @@ describe('Rota para atualizar uma tarefa (/update-task)', () => {
   });
 
   it('deve retornar um status 404 se o usuário informar um id válido mas que não exista no banco de dados para atualizar a tarefa', (done) => {
-    sinon.stub(models, 'updateTaskModel').resolves({ modifiedCount: 1 });
+    sinon.stub(models, 'updateTaskModel').resolves({ modifiedCount: 0 });
     request(app)
       .put('/update-task')
       .send({
